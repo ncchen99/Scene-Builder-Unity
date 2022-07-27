@@ -11,7 +11,7 @@ public class Widget : MonoBehaviour
     void Start()
     {
         // A correct website page.
-        StartCoroutine(GetRequest("http://127.0.0.1:5000/data/data.json"));
+        StartCoroutine(GetRequest("http://127.0.0.1:5000/data"));
     }
 
     IEnumerator GetRequest(string uri)
@@ -38,7 +38,7 @@ public class Widget : MonoBehaviour
                     for(int i = 0; i < result.data.Length; i++){
                         Asset asset = result.data[i];
                         if (asset.name.Equals("Cube")){
-                            GameObject objectAsset = Instantiate(cube, new Vector3(asset.position.x /25 ,asset.position.y/25,asset.position.z/25), new Quaternion(0,0,0,0)) as GameObject;
+                            GameObject objectAsset = Instantiate(cube, new Vector3(asset.position.x /25 ,asset.position.y/25,asset.position.z/-25), new Quaternion(0,0,0,0)) as GameObject;
                             Vector3 objectScale = objectAsset.transform.localScale;
                             // Sets the local scale of game object
                             objectAsset.transform.localScale = new Vector3(objectScale.x*2, objectScale.y*2 ,objectScale.z*2);
